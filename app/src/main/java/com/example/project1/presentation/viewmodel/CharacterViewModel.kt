@@ -34,6 +34,4 @@ class CharacterViewModel(
             _isLoading.value = false
         }
     }
-
-
 }

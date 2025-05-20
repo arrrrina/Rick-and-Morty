@@ -14,7 +14,6 @@ import org.slf4j.event.Level
 class CharacterApp : Application() {
     override fun onCreate() {
         super.onCreate()
-
         startKoin {
             androidContext(this@CharacterApp)
             modules(listOf(viewModelModule, databaseModule, repositoryModule, appModule))

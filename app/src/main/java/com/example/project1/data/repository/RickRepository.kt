@@ -15,7 +15,6 @@ class RickRepository(
         try {
             val localData = dao.getAllCharacters()
             if (localData.isEmpty() || forceRefresh) {
-
                 val remoteData = apiService.getAllCharacters()
                 val entities = remoteData.results.map { CharacterMapper.mapDTOEntity(it) }
                 dao.insertCharacters(remoteData.results.map { CharacterMapper.mapDTOToModel(it) })
@@ -23,8 +22,7 @@ class RickRepository(
             }
             return localData.map { CharacterMapper.mapModelToEntity(it) }
         } catch (e: Exception) {
-            Log.d("my error", "" + e.message)
-            throw e // или возврат пустого списка
+            throw e
         }
     }
 }

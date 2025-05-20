@@ -13,7 +13,6 @@ object RickApiService {
         try {
             return NetworkModule.publicClient.get("$BASE_URL/character").body()
         } catch (e: Exception) {
-            Log.d("net222", "loadCharacters: ${e.message}")
             throw Exception(e)
         }
     }

@@ -44,13 +44,11 @@ android {
     }
 }
 
-// исключаем один из конфликтующих дублирующих модулей
 configurations.all {
     exclude(group = "com.intellij", module = "annotations")
 }
 
 dependencies {
-    // Расширения Kotlin для базовых Android API.
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,25 +68,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Koin
+
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-//    implementation(libs.koin.androidx.viewmodel)
 
-    // Ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.client.serialization)
     implementation(libs.ktor.serialization.kotlinx.json)
 
-    // Room
     val roomVersion = "2.6.1"
     implementation(libs.androidx.room.runtime.v261)
     implementation(libs.androidx.room.ktx.v261)
-//    kapt("androidx.room:room-compiler:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion") // ksp
 
-    // Coil
     implementation(libs.coil.compose)
 }
