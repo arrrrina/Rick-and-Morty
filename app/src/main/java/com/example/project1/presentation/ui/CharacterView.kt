@@ -14,11 +14,18 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -30,9 +37,12 @@ import com.example.project1.presentation.viewmodel.CharacterViewModel
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharactersScreen(viewModel: CharacterViewModel = koinViewModel()) {
     val characters by viewModel.characters.collectAsState()
@@ -43,28 +53,64 @@ fun CharactersScreen(viewModel: CharacterViewModel = koinViewModel()) {
         viewModel.loadCharacter()
     }
 
-    Surface(modifier = Modifier.fillMaxSize()) {
-        when {
-            isLoading -> {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
-                }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Rick and Morty") }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { CoroutineScope(Dispatchers.Main).launch {
+                    viewModel.loadCharacter()
+                } },
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Icon(Icons.Filled.Refresh, "Refresh")
             }
-            isError -> {
-                Text(
-                    text = "Ошибка загрузки данных",
-
+        },
+        content = { innerPadding ->
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
                 )
-            }
-            characters.isEmpty() -> {
-                Text("Персонажей не найдено")
-            }
-            else -> {
-                CharactersList(characters = characters)
+                    {
+                        when {
+                            isLoading -> {
+                                Box(
+                                    modifier = Modifier.fillMaxSize(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    CircularProgressIndicator()
+                                }
+                            }
+                            isError -> {
+                                Box(
+                                    modifier = Modifier.fillMaxSize(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text("Ошибка загрузки данных")
+                                }
+                            }
+                            characters.isEmpty() -> {
+                                Box(
+                                    modifier = Modifier.fillMaxSize(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text("Персонажей не найдено")
+                                }
+                            }
+                            else -> {
+                                CharactersList(characters = characters)
+                            }
+                        }
             }
         }
-    }
+    )
 }
+
+
 
 @Composable
 fun CharactersList(characters: List<CharacterEntity>) {
