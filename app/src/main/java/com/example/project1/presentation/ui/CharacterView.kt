@@ -62,7 +62,7 @@ fun CharactersScreen(viewModel: CharacterViewModel = koinViewModel()) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { CoroutineScope(Dispatchers.Main).launch {
-                    viewModel.loadCharacter()
+                    viewModel.loadCharacter(true)
                 } },
                 modifier = Modifier.padding(16.dp)
             ) {
@@ -88,9 +88,11 @@ fun CharactersScreen(viewModel: CharacterViewModel = koinViewModel()) {
                             isError -> {
                                 Box(
                                     modifier = Modifier.fillMaxSize(),
-                                    contentAlignment = Alignment.Center
+                                    contentAlignment = Alignment.TopCenter,
                                 ) {
                                     Text("Ошибка загрузки данных")
+                                    Spacer(modifier = Modifier.height(16.dp))
+                                    CharactersList(characters = characters)
                                 }
                             }
                             characters.isEmpty() -> {
