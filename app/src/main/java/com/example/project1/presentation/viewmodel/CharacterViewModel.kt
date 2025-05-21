@@ -1,11 +1,8 @@
 package com.example.project1.presentation.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
-import com.example.project1.data.model.CharacterModel
 import com.example.project1.domain.entity.CharacterEntity
 import com.example.project1.domain.repository.IRickRepository
-import io.ktor.http.ContentType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,11 +19,11 @@ class CharacterViewModel(
     private val _isError = MutableStateFlow(false)
     val isError: StateFlow<Boolean> = _isError.asStateFlow()
 
-    suspend fun loadCharacter(forceRefresh: Boolean = false){
+    suspend fun loadCharacter(loadMore: Boolean = false){
         _isLoading.value = true
         _isError.value = false
         try {
-            val charactersList = repository.getAllCharacters(forceRefresh)
+            val charactersList = repository.getAllCharacters(loadMore)
             _characters.value = charactersList
         } catch(e: Exception){
             _isError.value = true

@@ -8,10 +8,16 @@ import io.ktor.client.request.get
 
 object RickApiService {
     private const val BASE_URL = "https://rickandmortyapi.com/api"
-
+    private var currentPage = 1
+    private var maxPage = 1
     suspend fun getAllCharacters(): CharacterListDTO {
         try {
-            return NetworkModule.publicClient.get("$BASE_URL/character").body()
+            val response = NetworkModule.publicClient
+                .get("$BASE_URL/character/?page=$currentPage")
+                .body<CharacterListDTO>()
+            maxPage = response.info.pages
+            currentPage = resetPagination()
+           return response
         } catch (e: Exception) {
             throw Exception(e)
         }
@@ -20,5 +26,10 @@ object RickApiService {
         return NetworkModule.publicClient.get("$BASE_URL/character/$id").body()
     }
 
-
+    private fun resetPagination() : Int {
+        if(currentPage < maxPage){
+            currentPage++
+        }
+        return currentPage
+    }
 }
