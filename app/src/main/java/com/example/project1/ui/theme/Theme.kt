@@ -10,45 +10,40 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
+    primary = Color(0xFF006A6B),
     onPrimary = Color.White,
+    primaryContainer = Color(0xFF80F0F1),
+    onPrimaryContainer = Color(0xFF002021),
+
+    secondary = Color(0xFF4A6267),
     onSecondary = Color.White,
+    secondaryContainer = Color(0xFFCDE7ED),
+    onSecondaryContainer = Color(0xFF051F23),
+
+    tertiary = Color(0xFF5C5B7E),
     onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    tertiaryContainer = Color(0xFFE2DFFF),
+    onTertiaryContainer = Color(0xFF191837),
+
+    background = Color(0xFFFAFDFD),
+    onBackground = Color(0xFF191C1C),
+
+    surface = Color(0xFFFAFDFD),
+    onSurface = Color(0xFF191C1C),
+
+    surfaceVariant = Color(0xFFDAE4E5),
+    onSurfaceVariant = Color(0xFF3F4849)
 )
 
 @Composable
 fun Project1Theme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colorScheme = LightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,

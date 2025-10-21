@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.9.0" type="incidents">
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.application than 8.9.0 is available: 8.9.2">
+        <fix-replace
+            description="Change to 8.9.2"
+            family="Update versions"
+            robot="true"
+            independent="true"
+            oldString="8.9.0"
+            replacement="8.9.2"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="2"
+            column="7"
+            startOffset="17"
+            endLine="2"
+            endColumn="14"
+            endOffset="24"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.15.0 is available: 1.16.0">
+        <fix-replace
+            description="Change to 1.16.0"
+            family="Update versions"
+            oldString="1.15.0"
+            replacement="1.16.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="7"
+            column="11"
+            startOffset="128"
+            endLine="7"
+            endColumn="19"
+            endOffset="136"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose:compose-bom than 2024.09.00 is available: 2025.04.01">
+        <fix-replace
+            description="Change to 2025.04.01"
+            family="Update versions"
+            oldString="2024.09.00"
+            replacement="2025.04.01"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="14"
+            column="14"
+            startOffset="292"
+            endLine="14"
+            endColumn="26"
+            endOffset="304"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="15"
+            column="11"
+            startOffset="315"
+            endLine="15"
+            endColumn="18"
+            endOffset="322"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="16"
+            column="15"
+            startOffset="337"
+            endLine="16"
+            endColumn="22"
+            endOffset="344"/>
+    </incident>
+
+</incidents>

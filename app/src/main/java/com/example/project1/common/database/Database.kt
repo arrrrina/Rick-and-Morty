@@ -8,7 +8,7 @@ import com.example.project1.data.service.CharactersDao
 
 @Database(
     entities = [CharacterModel::class],
-    version = 1,
+    version = 2,
     exportSchema = false,
 )
 abstract class Database: RoomDatabase() {

@@ -9,6 +9,8 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import com.example.project1.presentation.viewmodel.CharacterViewModel
+import com.example.project1.presentation.viewmodel.CharacterDetailViewModel
+
 
 val repositoryModule = module {
     single<IRickRepository> {
@@ -19,16 +21,21 @@ val repositoryModule = module {
 val databaseModule = module {
     single{
         Room.databaseBuilder(
-            androidContext(),
-            Database::class.java,
-            "database"
-        ).build()
+                    androidContext(),
+                    Database::class.java,
+                    "database"
+                ).build()
     }
+
+
 }
 
 val viewModelModule = module {
     viewModel { CharacterViewModel(get()) }
+    viewModel { CharacterDetailViewModel(get()) }
 }
+
+
 
 val appModule = module {
     single { get<Database>().characterDAO() }

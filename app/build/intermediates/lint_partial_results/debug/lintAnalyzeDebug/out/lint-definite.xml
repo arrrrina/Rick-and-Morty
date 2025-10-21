@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.9.0" type="incidents">
+
+    <incident
+        id="RedundantLabel"
+        severity="warning"
+        message="Redundant label can be removed">
+        <fix-attribute
+            description="Delete label"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="label"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*manifest*0}"
+            line="25"
+            column="13"
+            startOffset="966"
+            endLine="25"
+            endColumn="45"
+            endOffset="998"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.application than 8.9.0 is available: 8.9.2">
+        <fix-replace
+            description="Change to 8.9.2"
+            family="Update versions"
+            robot="true"
+            independent="true"
+            oldString="8.9.0"
+            replacement="8.9.2"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="2"
+            column="7"
+            startOffset="17"
+            endLine="2"
+            endColumn="14"
+            endOffset="24"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.7.1">
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="90"
+            column="9"
+            startOffset="2852"
+            endLine="90"
+            endColumn="51"
+            endOffset="2894"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.15.0 is available: 1.16.0">
+        <fix-replace
+            description="Change to 1.16.0"
+            family="Update versions"
+            oldString="1.15.0"
+            replacement="1.16.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="7"
+            column="11"
+            startOffset="128"
+            endLine="7"
+            endColumn="19"
+            endOffset="136"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose:compose-bom than 2024.09.00 is available: 2025.04.01">
+        <fix-replace
+            description="Change to 2025.04.01"
+            family="Update versions"
+            oldString="2024.09.00"
+            replacement="2025.04.01"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="14"
+            column="14"
+            startOffset="292"
+            endLine="14"
+            endColumn="26"
+            endOffset="304"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="15"
+            column="11"
+            startOffset="315"
+            endLine="15"
+            endColumn="18"
+            endOffset="322"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.7.1">
+        <fix-replace
+            description="Change to 2.7.1"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+            line="16"
+            column="15"
+            startOffset="337"
+            endLine="16"
+            endColumn="22"
+            endOffset="344"/>
+    </incident>
+
+    <incident
+        id="Typos"
+        severity="warning"
+        message="Did you mean &quot;project!&quot; instead of &quot;project1&quot;?">
+        <fix-replace
+            description="Replace with &quot;project!&quot;"
+            oldString="project1"
+            replacement="project!"
+            priority="0">
+            <range
+                file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+                startOffset="40"
+                endOffset="48"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/values/strings.xml"
+            line="2"
+            column="29"
+            startOffset="40"
+            endLine="2"
+            endColumn="29"
+            endOffset="47"/>
+    </incident>
+
+    <incident
+        id="UseKtx"
+        severity="warning"
+        message="Use the KTX extension function `String.toUri` instead?">
+        <fix-replace
+            description="Replace with the toUri extension function"
+            family="Replace with the toUri extension function"
+            robot="true"
+            independent="true"
+            oldString="Uri.parse(dto.image)"
+            replacement="dto.image.toUri()"
+            reformat="value"
+            imports="androidx.core.net.toUri"
+            priority="0">
+            <range
+                file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/project1/data/mapper/CharacterMapper.kt"
+                startOffset="439"
+                endOffset="459"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/project1/data/mapper/CharacterMapper.kt"
+            line="13"
+            column="25"
+            startOffset="439"
+            endLine="13"
+            endColumn="45"
+            endOffset="459"/>
+    </incident>
+
+    <incident
+        id="UseKtx"
+        severity="warning"
+        message="Use the KTX extension function `String.toUri` instead?">
+        <fix-replace
+            description="Replace with the toUri extension function"
+            family="Replace with the toUri extension function"
+            robot="true"
+            independent="true"
+            oldString="Uri.parse(model.image)"
+            replacement="model.image.toUri()"
+            reformat="value"
+            imports="androidx.core.net.toUri"
+            priority="0">
+            <range
+                file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/project1/data/mapper/CharacterMapper.kt"
+                startOffset="725"
+                endOffset="747"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/project1/data/mapper/CharacterMapper.kt"
+            line="21"
+            column="25"
+            startOffset="725"
+            endLine="21"
+            endColumn="47"
+            endOffset="747"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for room-compiler"
+            robot="true">
+            <fix-replace
+                description="Replace with roomVersion = &quot;2.6.1&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="roomVersion = &quot;2.6.1&quot;&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+                    startOffset="400"
+                    endOffset="400"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with room-compiler = { module = &quot;androidx.room:room-compiler&quot;, version.ref = &quot;roomVersion&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="room-compiler = { module = &quot;androidx.room:room-compiler&quot;, version.ref = &quot;roomVersion&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/AndroidStudioProjects/project1/gradle/libs.versions.toml"
+                    startOffset="3159"
+                    endOffset="3159"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.room.compiler"
+                robot="true"
+                replacement="libs.room.compiler"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2852"
+                    endOffset="2894"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="90"
+            column="9"
+            startOffset="2852"
+            endLine="90"
+            endColumn="51"
+            endOffset="2894"/>
+    </incident>
+
+</incidents>

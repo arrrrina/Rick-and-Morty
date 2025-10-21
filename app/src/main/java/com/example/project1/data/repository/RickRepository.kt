@@ -1,9 +1,9 @@
 package com.example.project1.data.repository
 
-import android.util.Log
 import com.example.project1.data.mapper.CharacterMapper
 import com.example.project1.data.service.CharactersDao
 import com.example.project1.data.service.RickApiService
+import com.example.project1.domain.entity.CharacterDetailEntity
 
 import com.example.project1.domain.entity.CharacterEntity
 import com.example.project1.domain.repository.IRickRepository
@@ -26,4 +26,32 @@ class RickRepository(
             throw e
         }
     }
+
+    override suspend fun getCharacterDetail(characterId: Int): CharacterDetailEntity {
+        return try {
+            val response = apiService.getCharacterDetail(characterId)
+            CharacterMapper.detailDTOToCharacterDetailEntity(response)
+
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+    override suspend fun getCharactersWithFilters(
+        name: String?,
+        status: String?,
+        gender: String?,
+        species: String?
+    ): List<CharacterEntity> {
+        return try {
+            val response = apiService.getCharactersWithFilters(name, status, gender, species)
+            val filteredCharacters = response.results.map { CharacterMapper.mapDTOEntity(it) }
+            filteredCharacters
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+
+
+
 }
